@@ -61,7 +61,7 @@ def run_tests(*test_args):
     # Run tests
     test_runner = NoseTestSuiteRunner(verbosity=1)
 
-    c = coverage(source=['oscar_cardless'], omit=['*migrations*', '*tests*'])
+    c = coverage(source=['oscar_gocardless'], omit=['*migrations*', '*tests*'])
     c.start()
     num_failures = test_runner.run_tests(test_args)
     c.stop()

@@ -4,9 +4,9 @@ from gocardless.exceptions import SignatureError, ClientError
 from oscar.apps.payment.exceptions import PaymentError
 
 
-# Implemented as a class so that project can subclass and override methods
-# if the parameters passed to GoCardless need to be configured
 class BillingFacade(object):
+    # Implemented as a class so that projects can subclass and override methods
+    # if the parameters passed to GoCardless need to be customised.
 
     def __init__(self, base_url):
         self.base_url = base_url
@@ -43,7 +43,7 @@ class BillingFacade(object):
 
 def confirm(request):
     """
-    Confirm a transaction with GoCardles
+    Confirm a transaction with GoCardless
     """
     # Pluck params straight off the request path - if any are missing or have been
     # manipulated, then we'll get a SignatureError
