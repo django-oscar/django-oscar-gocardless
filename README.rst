@@ -1,5 +1,5 @@
 ===================================
-GoCardLess package for django-oscar
+GoCardless package for django-oscar
 ===================================
 
 This is a work in progress - not ready for production yet.  It also depends on
@@ -24,6 +24,17 @@ Installation
 You need to make sure your redirect URI and cancel URIs are set up within your
 GoCardless dashboard.  Only the scheme and domain need to match so you can just
 put your site URL in there.
+
+Augment your root URLs conf to include::
+
+    (r'^gocardless/', include('oscar_gocardless.urls')),
+
+You'll need to fork the checkout app and override the ``PaymentDetailsView`` to
+call the GoCardless API for handling payment.  See the sandbox install for an
+example of how this can be done.
+
+[Further installation instructions to appear when this library is ready for
+production]
 
 Limitations
 ===========
@@ -54,7 +65,7 @@ Set up a sandbox site to play with::
 You can test the end-to-end process by adding an item to your basket and then
 proceeding through checkout.  After the preview page, you'll be redirected to
 the GoCardless 'sandbox' site where you can use the following account details to
-complete an order:
+complete an order::
 
     Account number -  55779911
     Sort code - 200000
